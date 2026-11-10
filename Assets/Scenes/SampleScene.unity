@@ -2366,9 +2366,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player
   playerInput: {fileID: 1527485132}
   cameraTransform: {fileID: 2103520561}
-  moveSpeed: 7
+  moveSpeed: 20
   jumpForce: 8
-  rotationSpeed: 5
+  rotationSpeed: 10
   isGrounded: 0
 --- !u!54 &1527485134
 Rigidbody:
@@ -2949,7 +2949,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2103520561
 Transform:
   m_ObjectHideFlags: 0
