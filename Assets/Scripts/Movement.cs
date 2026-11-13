@@ -2,10 +2,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public PlayerInput playerInput;
-    public CameraController cameraController;
+    public Transform cameraTransform;
 
     public float moveSpeed = 5f;
     public float jumpForce = 8f;
@@ -50,11 +50,16 @@ public class PlayerMovement : MonoBehaviour
 
     void Movement()
     {
-        Vector3 forward = cameraController.Forward;
-        Vector3 right = cameraController.Right;
+        Vector3 forward = cameraTransform.forward;
+        Vector3 right = cameraTransform.right;
 
-        Vector3 move = forward * moveInput.y +
-                       right * moveInput.x;
+        forward.y = 0f;
+        right.y = 0f;
+
+        forward.Normalize();
+        right.Normalize();
+
+        Vector3 move = forward * moveInput.y + right * moveInput.x;
 
         if (move.sqrMagnitude > 1f)
             move.Normalize();
@@ -69,10 +74,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Quaternion targetRotation = Quaternion.LookRotation(move);
 
-            Quaternion smoothRotation = Quaternion.RotateTowards(
-                rb.rotation,
-                targetRotation,
-                rotationSpeed * Time.fixedDeltaTime
+            Quaternion smoothRotation = Quaternion.RotateTowards(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime
             );
 
             rb.MoveRotation(smoothRotation);
