@@ -1,16 +1,29 @@
+
 using UnityEngine;
 
-public class CameraMovement : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public Vector3 Forward
     {
-        
+        get
+        {
+            return Quaternion.Euler(
+                0f,
+                transform.eulerAngles.y,
+                0f
+            ) * Vector3.forward;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public Vector3 Right
     {
-        
+        get
+        {
+            return Quaternion.Euler(
+                0f,
+                transform.eulerAngles.y,
+                0f
+            ) * Vector3.right;
+        }
     }
 }
