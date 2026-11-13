@@ -3776,7 +3776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   playerInput: {fileID: 1527485132}
-  cameraController: {fileID: 2103520565}
+  cameraTransform: {fileID: 2103520561}
   moveSpeed: 10
   jumpForce: 8
   rotationSpeed: 10
