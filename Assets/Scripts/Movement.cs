@@ -2,10 +2,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     public PlayerInput playerInput;
-    public Transform cameraTransform;
+    public CameraController cameraController;
 
     public float moveSpeed = 5f;
     public float jumpForce = 8f;
@@ -33,10 +33,9 @@ public class Player : MonoBehaviour
 
         if (jumpAction.WasPressedThisFrame() && isGrounded)
         {
-            rb.linearVelocity = new Vector3(
-                rb.linearVelocity.x,
-                jumpForce,
-                rb.linearVelocity.z
+            rb.linearVelocity = new Vector3
+            (
+                rb.linearVelocity.x, jumpForce, rb.linearVelocity.z
             );
 
             isGrounded = false;
@@ -50,24 +49,17 @@ public class Player : MonoBehaviour
 
     void Movement()
     {
-        Vector3 forward = cameraTransform.forward;
-        Vector3 right = cameraTransform.right;
-
-        forward.y = 0f;
-        right.y = 0f;
-
-        forward.Normalize();
-        right.Normalize();
+        Vector3 forward = cameraController.Forward;
+        Vector3 right = cameraController.Right;
 
         Vector3 move = forward * moveInput.y + right * moveInput.x;
 
         if (move.sqrMagnitude > 1f)
             move.Normalize();
 
-        rb.linearVelocity = new Vector3(
-            move.x * moveSpeed,
-            rb.linearVelocity.y,
-            move.z * moveSpeed
+        rb.linearVelocity = new Vector3
+        (
+            move.x * moveSpeed, rb.linearVelocity.y, move.z * moveSpeed
         );
 
         if (move.sqrMagnitude > 0.01f)

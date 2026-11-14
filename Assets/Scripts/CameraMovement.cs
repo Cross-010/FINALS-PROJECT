@@ -7,11 +7,7 @@ public class CameraController : MonoBehaviour
     {
         get
         {
-            return Quaternion.Euler(
-                0f,
-                transform.eulerAngles.y,
-                0f
-            ) * Vector3.forward;
+            return Quaternion.Euler(Quaternion.Euler(0f, transform.eulerAngles.y, 0f) * Vector3.forward;
         }
     }
 
@@ -19,11 +15,7 @@ public class CameraController : MonoBehaviour
     {
         get
         {
-            return Quaternion.Euler(
-                0f,
-                transform.eulerAngles.y,
-                0f
-            ) * Vector3.right;
+            return Quaternion.Euler(0f, transform.eulerAngles.y, 0f) * Vector3.right;
         }
     }
 }
