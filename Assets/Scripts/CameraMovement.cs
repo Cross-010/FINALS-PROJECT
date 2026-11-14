@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -7,7 +6,7 @@ public class CameraController : MonoBehaviour
     {
         get
         {
-            return Quaternion.Euler(Quaternion.Euler(0f, transform.eulerAngles.y, 0f) * Vector3.forward;
+            return Quaternion.Euler(0f, transform.eulerAngles.y, 0f) * Vector3.forward;
         }
     }
 
