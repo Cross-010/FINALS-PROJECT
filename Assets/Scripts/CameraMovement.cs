@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+public class CameraMovement : MonoBehaviour
 {
     public Vector3 Forward
     {
