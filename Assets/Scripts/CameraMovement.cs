@@ -9,9 +9,7 @@ public class CameraController : MonoBehaviour
         {
             return Quaternion.Euler(
                 0f,
-                transform.eulerAngles.y,
-                0f
-            ) * Vector3.forward;
+                transform.eulerAngles.y,0f) * Vector3.forward;
         }
     }
 
