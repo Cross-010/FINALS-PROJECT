@@ -11,7 +11,6 @@ public class SceneManager : MonoBehaviour
         SceneManager.LoadScene("Main Level");
     }
 
-    // Update is called once per frame
     void Update()
     {
         

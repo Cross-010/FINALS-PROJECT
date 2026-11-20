@@ -2,10 +2,9 @@ using UnityEngine;
 
 public class DropoffPoint : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        if(Item )
     }
 
     // Update is called once per frame
