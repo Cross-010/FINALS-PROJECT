@@ -8,7 +8,6 @@ public class SceneManager : MonoBehaviour
 
     public void LoadGame()
     {
-        SceneManager.LoadScene("Main Level");
     }
 
     void Update()
