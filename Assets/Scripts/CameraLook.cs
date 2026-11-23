@@ -54,7 +54,6 @@ public class CameraLook : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Rotate the Player horizontally with the camera
         if (playerRb != null)
         {
             playerRb.MoveRotation(Quaternion.Euler(0f, horizontalRotation, 0f));
@@ -66,10 +65,8 @@ public class CameraLook : MonoBehaviour
         if (player == null)
             return;
 
-        // Follow Player's position
         transform.position = player.position + Vector3.up * eyeHeight;
 
-        // Apply camera rotation
         transform.rotation = Quaternion.Euler(verticalRotation, horizontalRotation, 0f);
     }
 }
