@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class CameraLook : MonoBehaviour
 {
     public Transform player;
-    public Rigidbody playerRb;
+    public Rigidbody playerRigidbody;
 
     public float mouseSensitivity = 0.15f;
     public float eyeHeight = 1.6f;
@@ -54,9 +54,9 @@ public class CameraLook : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (playerRb != null)
+        if (playerRigidbody != null)
         {
-            playerRb.MoveRotation(Quaternion.Euler(0f, horizontalRotation, 0f));
+            playerRigidbody.MoveRotation(Quaternion.Euler(0f, horizontalRotation, 0f));
         }
     }
 
