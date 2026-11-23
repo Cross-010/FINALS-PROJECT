@@ -1,16 +1,44 @@
 using UnityEngine;
+using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private int score = 0;
+    public int requiredQuota = 5;
+    public TMP_Text quotaText;
+
     void Start()
     {
-        
+        UpdateQuotaUI();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AddScore()
     {
-        
+        score++;
+        UpdateQuotaUI();
+    }
+
+    public void DecreaseScore()
+    {
+        score = Mathf.Max(0, score - 1);
+        UpdateQuotaUI();
+    }
+
+    void UpdateQuotaUI()
+    {
+        if (quotaText != null)
+        {
+            quotaText.text = score + " / " + requiredQuota;
+        }
+    }
+
+    public int GetScore()
+    {
+        return score;
+    }
+
+    public bool QuotaReached()
+    {
+        return score >= requiredQuota;
     }
 }
