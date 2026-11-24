@@ -9,6 +9,7 @@ TagManager:
   - Dropoff
   - Item
   - SpawnPoint
+  - PlayerCamera
   layers:
   - Default
   - TransparentFX

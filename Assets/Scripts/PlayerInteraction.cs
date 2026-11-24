@@ -1,16 +1,67 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public PlayerInput playerInput;
+    public Camera playerCamera;
+    public Transform holdPoint;
+
+    public float pickupDistance = 3f;
+    public float throwForce = 10f;
+
+    private InputAction interactAction;
+    private InputAction throwAction;
+
+    private ItemController heldItem;
+
     void Start()
     {
-        
+        interactAction = playerInput.actions["Interact"];
+        throwAction = playerInput.actions["Throw"];
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (interactAction.WasPressedThisFrame())
+        {
+            PickUpItem();
+        }
+
+        if (throwAction.WasPressedThisFrame() && heldItem != null)
+        {
+            ThrowItem();
+        }
+    }
+
+    void PickUpItem()
+    {
+        if (heldItem != null)
+            return;
+
+        Ray ray = playerCamera.ViewportPointToRay(
+            new Vector3(0.5f, 0.5f, 0f)
+        );
+
+        if (Physics.Raycast(ray, out RaycastHit hit, pickupDistance))
+        {
+            ItemController item =
+                hit.collider.GetComponentInParent<ItemController>();
+
+            if (item != null && !item.isHeld)
+            {
+                heldItem = item;
+                heldItem.PickUp(holdPoint);
+            }
+        }
+    }
+
+    void ThrowItem()
+    {
+        Vector3 throwDirection = playerCamera.transform.forward;
+
+        heldItem.Throw(throwDirection, throwForce);
+
+        heldItem = null;
     }
 }
