@@ -5962,7 +5962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7bfb79445cda7240bb147d7b4e1a414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DropoffPoint
-  scoreManager: {fileID: 0}
+  scoreManager: {fileID: 792668713}
 --- !u!54 &1825035699
 Rigidbody:
   m_ObjectHideFlags: 0
