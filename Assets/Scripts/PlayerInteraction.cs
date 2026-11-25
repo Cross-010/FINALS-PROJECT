@@ -10,6 +10,9 @@ public class PlayerInteraction : MonoBehaviour
     public float pickupDistance = 3f;
     public float throwForce = 10f;
 
+    public AudioSource audioSource;
+    public AudioClip pickupSound;
+
     private InputAction interactAction;
     private InputAction throwAction;
 
@@ -39,9 +42,7 @@ public class PlayerInteraction : MonoBehaviour
         if (heldItem != null)
             return;
 
-        Ray ray = playerCamera.ViewportPointToRay(
-            new Vector3(0.5f, 0.5f, 0f)
-        );
+        Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 
         if (Physics.Raycast(ray, out RaycastHit hit, pickupDistance))
         {
@@ -52,6 +53,11 @@ public class PlayerInteraction : MonoBehaviour
             {
                 heldItem = item;
                 heldItem.PickUp(holdPoint);
+            }
+
+            if (audioSource != null && pickupSound != null)
+            {
+                audioSource.PlayOneShot(pickupSound);
             }
         }
     }
