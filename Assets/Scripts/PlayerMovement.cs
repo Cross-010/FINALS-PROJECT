@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public CameraController cameraController;
 
     public float moveSpeed = 5f;
+    public float sprintSpeed = 13f;
     public float jumpForce = 8f;
     public float rotationSpeed = 120f;
 
@@ -15,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     private InputAction moveAction;
     private InputAction jumpAction;
 
+    private bool isSprinting;
+
     private Rigidbody rb;
     private Vector2 moveInput;
 
@@ -22,22 +25,29 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
-        moveAction = playerInput.actions["Move"];
-        jumpAction = playerInput.actions["Jump"];
+        moveAction = playerInput.actions.FindAction("Move");
+        jumpAction = playerInput.actions.FindAction("Jump");
     }
 
     void Update()
     {
         moveInput = moveAction.ReadValue<Vector2>();
 
+        if (Keyboard.current != null)
+        {
+            isSprinting = Keyboard.current.leftCtrlKey.isPressed;
+        }
+
         if (jumpAction.WasPressedThisFrame() && isGrounded)
         {
-            rb.linearVelocity = new Vector3
-            (
-                rb.linearVelocity.x, jumpForce, rb.linearVelocity.z
-            );
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
 
             isGrounded = false;
+        }
+
+        if (isSprinting)
+        {
+            Debug.Log("SPRINT PRESSED!");
         }
     }
 
@@ -55,6 +65,17 @@ public class PlayerMovement : MonoBehaviour
 
         if (move.sqrMagnitude > 1f)
             move.Normalize();
+
+        float currentSpeed;
+
+        if (isSprinting)
+        {
+            currentSpeed = sprintSpeed;
+        }
+        else
+        {
+            currentSpeed = moveSpeed;
+        }
 
         rb.linearVelocity = new Vector3
         (
