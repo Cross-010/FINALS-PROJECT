@@ -646,6 +646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca1229066a8d4264f82865d47d2a03e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MultiplayerConnection
+  gameplayScene: Main Level
 --- !u!1 &533310041
 GameObject:
   m_ObjectHideFlags: 0

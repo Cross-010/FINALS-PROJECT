@@ -1,8 +1,11 @@
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MultiplayerConnection : MonoBehaviour
 {
+    public string gameplayScene = "Main Level";
+
     public void StartHost()
     {
         if (NetworkManager.Singleton == null)
@@ -16,6 +19,8 @@ public class MultiplayerConnection : MonoBehaviour
         if (started)
         {
             Debug.Log("Host started successfully!");
+
+            NetworkManager.Singleton.SceneManager.LoadScene(gameplayScene,LoadSceneMode.Single);
         }
         else
         {
@@ -45,8 +50,7 @@ public class MultiplayerConnection : MonoBehaviour
 
     public void Disconnect()
     {
-        if (NetworkManager.Singleton != null &&
-            NetworkManager.Singleton.IsListening)
+        if (NetworkManager.Singleton != null && NetworkManager.Singleton.IsListening)
         {
             NetworkManager.Singleton.Shutdown();
             Debug.Log("Disconnected from multiplayer session.");
