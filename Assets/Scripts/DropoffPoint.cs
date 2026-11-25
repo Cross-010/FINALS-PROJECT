@@ -1,35 +1,45 @@
-using UnityEngine;
 using System.Collections.Generic;
+using Unity.Netcode;
+using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class DropoffPoint : MonoBehaviour
 {
     public ScoreManager scoreManager;
 
-    private HashSet<GameObject> processedItems = new HashSet<GameObject>();
-
     void OnTriggerEnter(Collider other)
     {
-        GameObject item;
+        Debug.Log("DROP-OFF TRIGGER DETECTED: " + other.name);
 
-        if (other.attachedRigidbody != null)
-        {
-            item = other.attachedRigidbody.gameObject;
-        }
-        else
-        {
-            item = other.gameObject;
-        }
+        GameObject item = other.attachedRigidbody != null
+            ? other.attachedRigidbody.gameObject
+            : other.gameObject;
+
+        Debug.Log("Detected object: " + item.name);
+        Debug.Log("Object tag: " + item.tag);
 
         if (!item.CompareTag("Item"))
+        {
+            Debug.Log("Object is not tagged Item!");
             return;
+        }
 
-        if (processedItems.Contains(item))
+        if (NetworkManager.Singleton != null &&
+            !NetworkManager.Singleton.IsServer)
+        {
+            Debug.Log("Not the server. Ignoring drop-off.");
             return;
+        }
 
-        processedItems.Add(item);
+        if (scoreManager == null)
+        {
+            Debug.LogError("ScoreManager is not assigned!");
+            return;
+        }
+
+        Debug.Log("Item accepted! Adding score.");
 
         scoreManager.AddScore();
-
         Destroy(item);
     }
 }

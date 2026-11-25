@@ -22,6 +22,8 @@ public class ScoreManager : MonoBehaviour
 
         score++;
 
+        Debug.Log("SCORE INCREASED: " + score);
+
         UpdateQuotaUI();
 
         Debug.Log("Current Quota: " + score + "/" + requiredQuota);
