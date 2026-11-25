@@ -1,5 +1,7 @@
-using UnityEngine;
 using TMPro;
+using Unity.Netcode;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -14,8 +16,25 @@ public class ScoreManager : MonoBehaviour
 
     public void AddScore()
     {
+        if (NetworkManager.Singleton == null ||
+        !NetworkManager.Singleton.IsServer)
+            return;
+
         score++;
+
         UpdateQuotaUI();
+
+        Debug.Log("Current Quota: " + score + "/" + requiredQuota);
+
+        if (QuotaReached())
+        {
+            Debug.Log("QUOTA REACHED! GAME CLEAR!");
+
+            NetworkManager.Singleton.SceneManager.LoadScene(
+                "Game Clear",
+                LoadSceneMode.Single
+            );
+        }
     }
 
     public void DecreaseScore()
