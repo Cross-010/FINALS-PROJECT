@@ -7102,7 +7102,7 @@ Transform:
   m_GameObject: {fileID: 1825035693}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.36, y: 0, z: 0.77}
   m_LocalScale: {x: 4.417518, y: 0.61898, z: 2.4244}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7575,29 +7575,6 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
---- !u!136 &2008467434
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132148226731185}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.0020985655
-  m_Height: 0.011581587
-  m_Direction: 1
-  m_Center: {x: 0.00021406844, y: -0.00031494346, z: 0.00000027708606}
 --- !u!1 &2073349543
 GameObject:
   m_ObjectHideFlags: 0
@@ -8643,9 +8620,9 @@ GameObject:
   - component: {fileID: 543450652479747595}
   - component: {fileID: 3469287838410701230}
   - component: {fileID: 1711813854685400420}
-  - component: {fileID: 2008467434}
   - component: {fileID: 3469287838410701231}
   - component: {fileID: 3469287838410701232}
+  - component: {fileID: 3469287838410701233}
   m_Layer: 0
   m_Name: Axe
   m_TagString: Item
@@ -10153,6 +10130,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &3469287838410701233
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148226731185}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.0020985627
+  m_Height: 0.011581585
+  m_Direction: 1
+  m_Center: {x: 0.00021405892, y: -0.00031497318, z: 0.00000035154807}
 --- !u!23 &3769161697469462168
 MeshRenderer:
   m_ObjectHideFlags: 0
