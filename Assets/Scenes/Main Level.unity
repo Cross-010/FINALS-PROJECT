@@ -5089,6 +5089,7 @@ MonoBehaviour:
   throwForce: 10
   audioSource: {fileID: 1527485139}
   pickupSound: {fileID: 8300000, guid: d5b33e03269a4574f8985a888ca6e41d, type: 3}
+  throwSound: {fileID: 8300000, guid: 11ce69f810c3c3d47bb84735f9fed63f, type: 3}
 --- !u!82 &1527485139
 AudioSource:
   m_ObjectHideFlags: 0

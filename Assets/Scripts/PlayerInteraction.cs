@@ -12,6 +12,7 @@ public class PlayerInteraction : MonoBehaviour
 
     public AudioSource audioSource;
     public AudioClip pickupSound;
+    public AudioClip throwSound;
 
     private InputAction interactAction;
     private InputAction throwAction;
@@ -59,6 +60,7 @@ public class PlayerInteraction : MonoBehaviour
             {
                 audioSource.PlayOneShot(pickupSound);
             }
+       
         }
     }
 
@@ -69,5 +71,10 @@ public class PlayerInteraction : MonoBehaviour
         heldItem.Throw(throwDirection, throwForce);
 
         heldItem = null;
+
+        if (audioSource != null && throwSound != null)
+        {
+            audioSource.PlayOneShot(throwSound);
+        }
     }
 }
