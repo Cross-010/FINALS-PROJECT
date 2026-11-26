@@ -9,9 +9,7 @@ public class GameClearManager : MonoBehaviour
 
         // Disable CameraLook
         CameraLook[] cameras =
-            Object.FindObjectsByType<CameraLook>(
-                FindObjectsInactive.Include
-            );
+            Object.FindObjectsByType<CameraLook>(FindObjectsInactive.Include);
 
         foreach (CameraLook cameraLook in cameras)
         {
@@ -20,9 +18,7 @@ public class GameClearManager : MonoBehaviour
 
         // Disable PlayerMovement
         PlayerMovement[] players =
-            Object.FindObjectsByType<PlayerMovement>(
-                FindObjectsInactive.Include
-            );
+            Object.FindObjectsByType<PlayerMovement>(FindObjectsInactive.Include);
 
         foreach (PlayerMovement player in players)
         {
@@ -31,9 +27,7 @@ public class GameClearManager : MonoBehaviour
 
         // Disable PlayerInteraction
         PlayerInteraction[] interactions =
-            Object.FindObjectsByType<PlayerInteraction>(
-                FindObjectsInactive.Include
-            );
+            Object.FindObjectsByType<PlayerInteraction>(FindObjectsInactive.Include);
 
         foreach (PlayerInteraction interaction in interactions)
         {
