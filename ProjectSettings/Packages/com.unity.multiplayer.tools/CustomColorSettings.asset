@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.Multiplayer.Tools.Common::Unity.Multiplayer.Tools.Common.Visualization.CustomColorSettings
   colors:
-    m_Keys: 00000000
+    m_Keys: 0000000001000000
     m_Values:
     - {r: 0, g: 0.16036844, b: 1, a: 1}
+    - {r: 0.64988863, g: 0.02352939, b: 0.8039216, a: 1}
